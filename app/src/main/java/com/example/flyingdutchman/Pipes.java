@@ -1,4 +1,4 @@
 package com.example.flyingdutchman;
 
-public class Menu {
+public class Pipes {
 }
