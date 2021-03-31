@@ -47,7 +47,7 @@ public class GameView extends SurfaceView implements Runnable {
     private SoundPool soundPool;
     private List<Bullet> bullets;
     private int sound;
-    private com.heyletscode.ihavetofly.Flight flight;
+    private com.example.flyingdutchman.Flight flight;
     private GameActivity activity;
     private Background background1, background2;
 
@@ -73,7 +73,7 @@ public class GameView extends SurfaceView implements Runnable {
         } else
             soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
-        sound = soundPool.load(activity, R.raw.shoot, 1);
+        //sound = soundPool.load(activity, R.raw.shoot, 1);
 
         this.screenX = screenX;
         this.screenY = screenY;
@@ -251,9 +251,9 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void saveIfHighScore() {
 
-        if (prefs.getInt("highscore", 0) < score) {
+        if (prefs.getInt("score: ", 0) < score) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("highscore", score);
+            editor.putInt("score: ", score);
             editor.apply();
         }
 
