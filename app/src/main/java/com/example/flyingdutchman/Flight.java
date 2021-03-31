@@ -7,8 +7,9 @@ import android.graphics.Rect;
 
 import com.example.flyingdutchman.GameView;
 
-import static com.heyletscode.ihavetofly.GameView.screenRatioX;
-import static com.heyletscode.ihavetofly.GameView.screenRatioY;
+import static com.example.flyingdutchman.GameView.screenRatioX;
+import static com.example.flyingdutchman.GameView.screenRatioY;
+
 
 public class Flight {
 
