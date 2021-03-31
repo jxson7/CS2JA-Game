@@ -1,4 +1,4 @@
 package com.example.flyingdutchman;
 
-public class Bullet {
+public class Bird {
 }
