@@ -8,13 +8,6 @@ import java.util.Random;
 public class Tubes extends BaseObjects {
     public static int speed;
 
-    public static int getSpeed() {
-        return speed;
-    }
-
-    public static void setSpeed(int speed) {
-        Tubes.speed = speed;
-    }
 
     public Tubes(float x, float y, int w, int h){
         super (x,y,w,h);
@@ -38,4 +31,4 @@ public class Tubes extends BaseObjects {
         this.bitmap = Bitmap.createScaledBitmap(bitmap,w, h, true);
     }
     }
-}
+
