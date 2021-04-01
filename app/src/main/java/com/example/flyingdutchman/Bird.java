@@ -64,5 +64,5 @@ public class Bird {
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);
     }
-
+//test
 }
