@@ -13,7 +13,7 @@ public class Flight2 {
 
     int toShoot = 0;
     boolean isGoingUp = false;
-    int x, y, width, height, wingCounter = 0, shootCounter = 1;
+    int x, y, width =1080 , height = 720 , wingCounter = 0, shootCounter = 1;
     Bitmap flight1, flight2, shoot1, shoot2, shoot3, shoot4, shoot5, dead;
     private final GameView2 gameView;
 
@@ -29,8 +29,11 @@ public class Flight2 {
         flight1 = BitmapFactory.decodeResource(res, R.drawable.fly1);
         flight2 = BitmapFactory.decodeResource(res, R.drawable.fly2);
 
-        width = flight1.getWidth();
-        height = flight1.getHeight();
+        width = 1080;
+        height = 720;
+
+        width = flight2.getWidth();
+        height = flight2.getHeight();
 
         width /= 4;
         height /= 4;

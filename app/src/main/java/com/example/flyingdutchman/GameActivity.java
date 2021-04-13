@@ -10,7 +10,7 @@ import android.view.WindowManager;
  */
 public class GameActivity extends AppCompatActivity {
 
-    private GameView gameView;
+    public GameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

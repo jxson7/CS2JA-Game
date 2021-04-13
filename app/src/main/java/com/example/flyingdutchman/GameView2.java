@@ -32,7 +32,7 @@ public class GameView2 extends SurfaceView implements Runnable {
     private  SoundPool soundPool;
     private  List<Bullet> bullets;
     private int sound;
-    private Flight2 flight;
+    private  com.example.flyingdutchman.Flight2 flight;
     private GameActivity2 activity;
     private  BackgroundLevel2 background1;
     private  BackgroundLevel2 background2;
@@ -41,6 +41,7 @@ public class GameView2 extends SurfaceView implements Runnable {
         super(activity);
 
         this.activity = activity;
+
 
         prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
 
@@ -91,6 +92,7 @@ public class GameView2 extends SurfaceView implements Runnable {
         random = new Random();
 
     }
+
 
 
 
