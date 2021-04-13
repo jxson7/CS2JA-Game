@@ -33,10 +33,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.difficulty).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.L2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, GameActivity2.class));// starting of Level 2
+            }
+        });
+
+        findViewById(R.id.L3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GameActivity3.class));// starting of Level 3
             }
         });
 

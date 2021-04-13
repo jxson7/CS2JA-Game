@@ -21,21 +21,21 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Thread thread;
     private boolean isPlaying, isGameOver = false;
-    private final int screenX;
-    private final int screenY;
+    public  int screenX;
+    public int screenY;
     private int score = 0;
     public static float screenRatioX, screenRatioY;
-    private final Paint paint;
-    private final Enemy[] enemys;
-    private final SharedPreferences prefs;
-    private final Random random;
-    private final SoundPool soundPool;
-    private final List<Bullet> bullets;
+    private  Paint paint;
+    private  Enemy[] enemys;
+    private  SharedPreferences prefs;
+    private  Random random;
+    private  SoundPool soundPool;
+    private  List<Bullet> bullets;
     private int sound;
-    private final com.example.flyingdutchman.Flight flight;
-    private final GameActivity activity;
-    private final Background background1;
-    private final Background background2;
+    private  com.example.flyingdutchman.Flight flight;
+    private  GameActivity activity;
+    private  Background background1;
+    private  Background background2;
 
     public GameView(GameActivity activity, int screenX, int screenY) {
         super(activity);
@@ -91,6 +91,22 @@ public class GameView extends SurfaceView implements Runnable {
         random = new Random();
 
     }
+
+    public GameView(GameActivity2 activity) {
+        super(activity);
+        this.activity = activity;
+
+        prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
+
+    }
+
+    public GameView(GameActivity3 activity) {
+        super(activity);
+        this.activity = activity;
+
+        prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
+    }
+
 
     @Override
     public void run() {
