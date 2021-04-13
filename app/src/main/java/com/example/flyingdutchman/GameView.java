@@ -25,17 +25,17 @@ public class GameView extends SurfaceView implements Runnable {
     public int screenY;
     private int score = 0;
     public static float screenRatioX, screenRatioY;
-    private  Paint paint;
-    private  Enemy[] enemys;
-    private  SharedPreferences prefs;
-    private  Random random;
-    private  SoundPool soundPool;
-    private  List<Bullet> bullets;
+    private final Paint paint;
+    private final Enemy[] enemys;
+    private final SharedPreferences prefs;
+    private final Random random;
+    private final SoundPool soundPool;
+    private final List<Bullet> bullets;
     private int sound;
-    private  com.example.flyingdutchman.Flight flight;
-    private  GameActivity activity;
-    private  Background background1;
-    private  Background background2;
+    private final com.example.flyingdutchman.Flight flight;
+    private final GameActivity activity;
+    private final Background background1;
+    private final Background background2;
 
     public GameView(GameActivity activity, int screenX, int screenY) {
         super(activity);

@@ -25,17 +25,17 @@ public class GameView3 extends SurfaceView implements Runnable {
     public int screenY;
     private int score = 0;
     public static float screenRatioX, screenRatioY;
-    private  Paint paint;
-    private  Enemy[] enemys;
-    private  SharedPreferences prefs;
-    private  Random random;
-    private  SoundPool soundPool;
-    private  List<Bullet> bullets;
+    private final Paint paint;
+    private final Enemy[] enemys;
+    private final SharedPreferences prefs;
+    private final Random random;
+    private final SoundPool soundPool;
+    private final List<Bullet> bullets;
     private int sound;
-    private Flight3 flight;
-    private GameActivity3 activity;
-    private  BackgroundLevel3 background1;
-    private  BackgroundLevel3 background2;
+    private final Flight3 flight;
+    private final GameActivity3 activity;
+    private final BackgroundLevel3 background1;
+    private final BackgroundLevel3 background2;
 
     public GameView3(GameActivity3 activity, int screenX, int screenY) {
         super(activity);
@@ -169,10 +169,10 @@ public class GameView3 extends SurfaceView implements Runnable {
 
             if (enemy.x + enemy.width < 0) {
 
-                if (!enemy.wasShot) {
-                    isGameOver = true;
-                    return;
-                }
+//                if (!enemy.wasShot) {
+//                    isGameOver = true;
+//                    return;
+//                }
 
                 int bound = (int) (10 * screenRatioX);
                 enemy.speed = random.nextInt(bound);
@@ -283,13 +283,13 @@ public class GameView3 extends SurfaceView implements Runnable {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (event.getX() < screenX / 2) {
+                if (!(event.getX() >= (screenX / 2))) {
                     flight.isGoingUp = true;
                 }
                 break;
             case MotionEvent.ACTION_UP:
                 flight.isGoingUp = false;
-                if (event.getX() > screenX / 2)
+                if (!(event.getX() <= (2 / screenX)))
                     flight.toShoot++;
                 break;
         }

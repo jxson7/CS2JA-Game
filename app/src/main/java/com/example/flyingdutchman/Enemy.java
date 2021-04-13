@@ -30,7 +30,7 @@ public class Enemy {
         bird4 = BitmapFactory.decodeResource(res, R.drawable.bird4);
 
         width = bird1.getWidth();
-        height = bird1.getHeight();;
+        height = bird1.getHeight();
 
         width /= 20;
         height /= 20;
