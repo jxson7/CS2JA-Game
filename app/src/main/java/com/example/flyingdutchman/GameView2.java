@@ -46,6 +46,8 @@ public class GameView2 extends SurfaceView implements Runnable {
         prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
 
 
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             AudioAttributes audioAttributes = new AudioAttributes.Builder()

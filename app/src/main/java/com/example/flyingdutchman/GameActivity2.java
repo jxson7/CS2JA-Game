@@ -1,15 +1,16 @@
 package com.example.flyingdutchman;
 
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import com.example.flyingdutchman.Background;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 /**
  *
  */
-public class GameActivity2 extends AppCompatActivity {
+public class GameActivity2 extends GameActivity {
 
     public GameView2 gameView;
 
@@ -17,16 +18,7 @@ public class GameActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int x =1;
-        int y = 1;
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-//        DisplayMetrics displaymetrics = new DisplayMetrics(); getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-//        int height = displaymetrics.heightPixels;
-//        int width = displaymetrics.widthPixels;
-//
-//        gameView = new GameView2(this, height, width);
 
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
