@@ -11,35 +11,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * 
+ * The following class focuses on the creation of th main home screen that the user will interact with. This includes button controls for the user.
  */
 public class MainActivity extends AppCompatActivity {
 
     private boolean isMute;
 
     @Override
-    /**
-     *
-     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); // allowance of full screen for the user
 
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, GameActivity.class));
+                startActivity(new Intent(MainActivity.this, GameActivity.class)); // starting activity of Level 1
             }
         });
 
         findViewById(R.id.difficulty).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, GameActivity2.class));
+                startActivity(new Intent(MainActivity.this, GameActivity2.class));// starting of Level 2
             }
         });
 
@@ -57,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         else
             volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
 
+        // volume controller
         volumeCtrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
