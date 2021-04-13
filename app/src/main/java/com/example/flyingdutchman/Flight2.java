@@ -9,20 +9,20 @@ import static com.example.flyingdutchman.GameView.screenRatioX;
 import static com.example.flyingdutchman.GameView.screenRatioY;
 
 
-public class Flight {
+public class Flight2 {
 
     int toShoot = 0;
     boolean isGoingUp = false;
     int x, y, width, height, wingCounter = 0, shootCounter = 1;
     Bitmap flight1, flight2, shoot1, shoot2, shoot3, shoot4, shoot5, dead;
-    private final GameView gameView;
+    private final GameView2 gameView;
 
     /**
      *  @param gameView
      * @param screenY
      * @param res
      */
-    Flight (GameView gameView, int screenY, Resources res) {
+    Flight2(GameView2 gameView, int screenY, Resources res) {
 
         this.gameView = gameView;
 

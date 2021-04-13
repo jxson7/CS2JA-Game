@@ -1,19 +1,18 @@
 package com.example.flyingdutchman;
 
 import android.graphics.Point;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
 /**
  *
  */
-public class GameActivity2 extends GameActivity {
+public class GameActivity2 extends AppCompatActivity {
+
     private GameView2 gameView;
 
     @Override
-    /**
-     *
-     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

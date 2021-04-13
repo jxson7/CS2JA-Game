@@ -42,6 +42,7 @@ public class GameView extends SurfaceView implements Runnable {
 
         this.activity = activity;
 
+
         prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
 
 
@@ -92,20 +93,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     }
 
-    public GameView(GameActivity2 activity) {
-        super(activity);
-        this.activity = activity;
 
-        prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
-
-    }
-
-    public GameView(GameActivity3 activity) {
-        super(activity);
-        this.activity = activity;
-
-        prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
-    }
 
 
     @Override
