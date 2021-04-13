@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        findViewById(R.id.L3).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, GameActivity3.class));// starting of Level 3
-//            }
-//        });
+        findViewById(R.id.L3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GameActivity3.class));// starting of Level 3
+            }
+        });
 
         TextView highScoreTxt = findViewById(R.id.highScoreTxt);
 

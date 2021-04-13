@@ -16,7 +16,7 @@ public class BackgroundLevel2 {
      */
     BackgroundLevel2(int screenX, int screenY, Resources res) {
 
-        background = BitmapFactory.decodeResource(res, R.drawable.backgroundl3);
+        background = BitmapFactory.decodeResource(res, R.drawable.backgroundl2);
         background = Bitmap.createScaledBitmap(background, screenX, screenY, false);
 
     }
