@@ -13,6 +13,10 @@ public class Bullet {
     int x, y, width, height;
     Bitmap bullet;
 
+    /**
+     *
+     * @param res
+     */
     Bullet (Resources res) {
 
         bullet = BitmapFactory.decodeResource(res, R.drawable.bullet);
@@ -30,6 +34,10 @@ public class Bullet {
 
     }
 
+    /**
+     *
+     * @return
+     */
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);
     }

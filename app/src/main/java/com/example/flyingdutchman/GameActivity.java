@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+/**
+ *
+ */
 public class GameActivity extends AppCompatActivity {
 
     private GameView gameView;
@@ -23,12 +26,18 @@ public class GameActivity extends AppCompatActivity {
         setContentView(gameView);
     }
 
+    /**
+     *
+     */
     @Override
     protected void onPause() {
         super.onPause();
         gameView.pause();
     }
 
+    /**
+     *
+     */
     @Override
     protected void onResume() {
         super.onResume();

@@ -8,6 +8,12 @@ public class Background {
     int x = 0, y = 0;
     Bitmap background;
 
+    /**
+     *
+     * @param screenX
+     * @param screenY
+     * @param res
+     */
     Background (int screenX, int screenY, Resources res) {
 
         background = BitmapFactory.decodeResource(res, R.drawable.background);

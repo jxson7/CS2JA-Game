@@ -17,8 +17,14 @@ public class Flight {
     boolean isGoingUp = false;
     int x, y, width, height, wingCounter = 0, shootCounter = 1;
     Bitmap flight1, flight2, shoot1, shoot2, shoot3, shoot4, shoot5, dead;
-    private GameView gameView;
+    private final GameView gameView;
 
+    /**
+     *
+     * @param gameView
+     * @param screenY
+     * @param res
+     */
     Flight (GameView gameView, int screenY, Resources res) {
 
         this.gameView = gameView;
@@ -58,6 +64,10 @@ public class Flight {
 
     }
 
+    /**
+     *
+     * @return
+     */
     Bitmap getFlight () {
 
         if (toShoot != 0) {
@@ -98,10 +108,18 @@ public class Flight {
         return flight2;
     }
 
+    /**
+     *
+     * @return
+     */
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);
     }
 
+    /**
+     * 
+     * @return
+     */
     Bitmap getDead () {
         return dead;
     }

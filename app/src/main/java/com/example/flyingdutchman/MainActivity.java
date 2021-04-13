@@ -10,11 +10,17 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * 
+ */
 public class MainActivity extends AppCompatActivity {
 
     private boolean isMute;
 
     @Override
+    /**
+     *
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

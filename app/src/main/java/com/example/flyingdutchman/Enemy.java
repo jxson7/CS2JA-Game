@@ -8,14 +8,21 @@ import android.graphics.Rect;
 import static com.example.flyingdutchman.GameView.screenRatioX;
 import static com.example.flyingdutchman.GameView.screenRatioY;
 
-public class Bird {
+/**
+ *
+ */
+public class Enemy {
 
     public int speed = 10;
     public boolean wasShot = true;
-    int x = 0, y, width, height, birdCounter = 1;
+    int x = 0, y, width, height, EnemyCounter = 1;
     Bitmap bird1, bird2, bird3, bird4;
 
-    Bird (Resources res) {
+    /**
+     *
+     * @param res
+     */
+    Enemy (Resources res) {
 
         bird1 = BitmapFactory.decodeResource(res, R.drawable.bird1);
         bird2 = BitmapFactory.decodeResource(res, R.drawable.bird2);
@@ -23,7 +30,7 @@ public class Bird {
         bird4 = BitmapFactory.decodeResource(res, R.drawable.bird4);
 
         width = bird1.getWidth();
-        height = bird1.getHeight();
+        height = bird1.getHeight();;
 
         width /= 20;
         height /= 20;
@@ -39,28 +46,37 @@ public class Bird {
         y = -height;
     }
 
-    Bitmap getBird () {
+    /**
+     *
+     * @return
+     */
+    Bitmap getEnemy () {
 
-        if (birdCounter == 1) {
-            birdCounter++;
+        if (EnemyCounter == 1) {
+            EnemyCounter++;
             return bird1;
         }
 
-        if (birdCounter == 2) {
-            birdCounter++;
+        if (EnemyCounter == 2) {
+            EnemyCounter++;
             return bird2;
         }
 
-        if (birdCounter == 3) {
-            birdCounter++;
+        if (EnemyCounter == 3) {
+            EnemyCounter++;
             return bird3;
         }
 
-        birdCounter = 1;
+        EnemyCounter = 1;
 
         return bird4;
     }
 
+
+    /**
+     *
+     * @return
+     */
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);
     }

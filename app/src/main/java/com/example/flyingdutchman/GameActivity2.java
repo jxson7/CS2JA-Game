@@ -4,10 +4,16 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+/**
+ *
+ */
 public class GameActivity2 extends GameActivity {
     private GameView2 gameView;
 
     @Override
+    /**
+     *
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -21,12 +27,18 @@ public class GameActivity2 extends GameActivity {
         setContentView(gameView);
     }
 
+    /**
+     *
+     */
     @Override
     protected void onPause() {
         super.onPause();
         gameView.pause();
     }
 
+    /**
+     *
+     */
     @Override
     protected void onResume() {
         super.onResume();
