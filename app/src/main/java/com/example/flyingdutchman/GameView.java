@@ -133,12 +133,12 @@ public class GameView extends SurfaceView implements Runnable {
         if (flight.y >= screenY - flight.height)
             flight.y = screenY - flight.height;
 
-        List<Bullet> trash = new ArrayList<>();
+        List<Bullet> remove = new ArrayList<>();
 
         for (Bullet bullet : bullets) {
 
             if (bullet.x > screenX)
-                trash.add(bullet);
+                remove.add(bullet);
 
             bullet.x += 50 * screenRatioX;
 
@@ -158,7 +158,7 @@ public class GameView extends SurfaceView implements Runnable {
 
         }
 
-        for (Bullet bullet : trash)
+        for (Bullet bullet : remove)
             bullets.remove(bullet);
 
         for (Enemy enemy : enemys) {
@@ -167,10 +167,10 @@ public class GameView extends SurfaceView implements Runnable {
 
             if (enemy.x + enemy.width < 0) {
 
-                if (!enemy.wasShot) {
-                    isGameOver = true;
-                    return;
-                }
+//                if (!enemy.wasShot) {
+//                 //   isGameOver = true;
+//                    return;
+//                }
 
                 int bound = (int) (10 * screenRatioX);
                 enemy.speed = random.nextInt(bound);
@@ -193,6 +193,8 @@ public class GameView extends SurfaceView implements Runnable {
         }
 
     }
+
+
 
     private void draw () {
 
@@ -306,6 +308,7 @@ public class GameView extends SurfaceView implements Runnable {
         bullets.add(bullet);
 
     }
+
 }
 
 

@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_below="@id/play"
-        android:text="Ghost Town"
+        android:text="GhostTown"
         android:textColor="#E80000"
         android:textSize="30sp"
         />
@@ -47,7 +47,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sky High 9"
+        android:text="SkyHighNine"
         android:textSize="30sp"
         android:layout_centerInParent="true"
         android:textColor="#20C6FA"
@@ -56,7 +56,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retro Universe"
+        android:text="Retro '84"
         android:textSize="30sp"
         android:layout_below="@id/L2"
         android:layout_centerInParent="true"

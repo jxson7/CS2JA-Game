@@ -3,6 +3,7 @@ package com.example.flyingdutchman;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 
 /**
@@ -42,5 +43,11 @@ public class GameActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         gameView.resume();
+    }
+
+    public void onClick(View view) {
+       // gameView.fireBullets();
+        gameView.newBullet();
+
     }
 }

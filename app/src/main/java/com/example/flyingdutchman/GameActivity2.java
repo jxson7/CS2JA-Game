@@ -5,6 +5,7 @@ import android.graphics.Point;
 import com.example.flyingdutchman.Background;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 
 /**
@@ -44,5 +45,11 @@ public class GameActivity2 extends GameActivity {
     protected void onResume() {
         super.onResume();
         gameView.resume();
+    }
+
+    public void onClick(View view) {
+        // gameView.fireBullets();
+        gameView.newBullet();
+
     }
 }
