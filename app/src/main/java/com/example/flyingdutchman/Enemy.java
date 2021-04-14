@@ -7,16 +7,20 @@ import android.graphics.Rect;
 
 import static com.example.flyingdutchman.GameView.screenRatioX;
 import static com.example.flyingdutchman.GameView.screenRatioY;
+import static com.example.flyingdutchman.R.drawable.bird1;
+import static com.example.flyingdutchman.R.drawable.bird2;
+import static com.example.flyingdutchman.R.drawable.bird3;
+import static com.example.flyingdutchman.R.drawable.bird4;
 
 /**
- *
+ * This class focuses on the enemy and generation and illustrations of the sprite.
  */
 public class Enemy {
 
-    public int speed = 10;
-    public boolean wasShot = true;
+    public int speed = 3; // a based speed value is set up
+    public boolean wasShot = true; // boolean is set to trigger if the bird was shot.
     int x = 0, y, width, height, EnemyCounter = 1;
-    Bitmap bird1, bird2, bird3, bird4;
+    Bitmap enemySprite1, enemySprite2, enemySprite3, enemySprite4;
 
     /**
      *
@@ -24,13 +28,13 @@ public class Enemy {
      */
     Enemy (Resources res) {
 
-        bird1 = BitmapFactory.decodeResource(res, R.drawable.bird1);
-        bird2 = BitmapFactory.decodeResource(res, R.drawable.bird2);
-        bird3 = BitmapFactory.decodeResource(res, R.drawable.bird3);
-        bird4 = BitmapFactory.decodeResource(res, R.drawable.bird4);
+        enemySprite1 = BitmapFactory.decodeResource(res, bird1);
+        enemySprite2 = BitmapFactory.decodeResource(res, bird2);
+        enemySprite3 = BitmapFactory.decodeResource(res, bird3);
+        enemySprite4 = BitmapFactory.decodeResource(res, bird4);
 
-        width = bird1.getWidth();
-        height = bird1.getHeight();
+        width = enemySprite1.getWidth();
+        height = enemySprite1.getHeight();
 
         width /= 20;
         height /= 20;
@@ -38,10 +42,10 @@ public class Enemy {
         width = (int) (width * screenRatioX);
         height = (int) (height * screenRatioY);
 
-        bird1 = Bitmap.createScaledBitmap(bird1, width, height, false);
-        bird2 = Bitmap.createScaledBitmap(bird2, width, height, false);
-        bird3 = Bitmap.createScaledBitmap(bird3, width, height, false);
-        bird4 = Bitmap.createScaledBitmap(bird4, width, height, false);
+        enemySprite1 = Bitmap.createScaledBitmap(enemySprite1, width, height, false);
+        enemySprite2 = Bitmap.createScaledBitmap(enemySprite2, width, height, false);
+        enemySprite3 = Bitmap.createScaledBitmap(enemySprite3, width, height, false);
+        enemySprite4 = Bitmap.createScaledBitmap(enemySprite4, width, height, false);
 
         y = -height;
     }
@@ -54,22 +58,22 @@ public class Enemy {
 
         if (EnemyCounter == 1) {
             EnemyCounter++;
-            return bird1;
+            return enemySprite1;
         }
 
         if (EnemyCounter == 2) {
             EnemyCounter++;
-            return bird2;
+            return enemySprite2;
         }
 
         if (EnemyCounter == 3) {
             EnemyCounter++;
-            return bird3;
+            return enemySprite3;
         }
 
         EnemyCounter = 1;
 
-        return bird4;
+        return enemySprite4;
     }
 
 
@@ -80,5 +84,5 @@ public class Enemy {
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);
     }
-//test
+
 }
