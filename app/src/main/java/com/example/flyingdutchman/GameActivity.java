@@ -45,8 +45,8 @@ public class GameActivity extends AppCompatActivity {
         gameView.resume();
     }
 
+
     public void onClick(View view) {
-       // gameView.fireBullets();
         gameView.newBullet();
 
     }
