@@ -243,9 +243,9 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void saveIfHighScore() {
 
-        if (prefs.getInt("score: ", 0) < score) {
+        if (prefs.getInt("l1score", 0) < score) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("score: ", score);
+            editor.putInt("l1score", score);
             editor.apply();
         }
 
@@ -299,8 +299,6 @@ public class GameView extends SurfaceView implements Runnable {
 
     public void newBullet() {
 
-        if (!prefs.getBoolean("isMute", false))
-            soundPool.play(sound, 1, 1, 0, 0, 1);
 
         Bullet bullet = new Bullet(getResources());
         bullet.x = flight.x + flight.width;

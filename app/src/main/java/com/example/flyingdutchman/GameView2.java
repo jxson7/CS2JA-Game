@@ -168,11 +168,11 @@ public class GameView2 extends SurfaceView implements Runnable {
             enemy.x -= enemy.speed;
 
             if (enemy.x + enemy.width < 0) {
-
-                if (!enemy.wasShot) {
-                    isGameOver = true;
-                    return;
-                }
+//
+//                if (!enemy.wasShot) {
+//                    isGameOver = true;
+//                    return;
+//                }
 
                 int bound = (int) (10 * screenRatioX);
                 enemy.speed = random.nextInt(bound);
@@ -243,9 +243,9 @@ public class GameView2 extends SurfaceView implements Runnable {
 
     private void saveIfHighScore() {
 
-        if (prefs.getInt("score: ", 0) < score) {
+        if (prefs.getInt("l2score", 0) < score) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("score: ", score);
+            editor.putInt("l2score", score);
             editor.apply();
         }
 

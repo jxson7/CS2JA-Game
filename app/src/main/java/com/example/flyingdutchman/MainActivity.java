@@ -48,48 +48,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView level1HighScore = findViewById(R.id.level1HighScore);
+        SharedPreferences l1 = getSharedPreferences("l1", MODE_PRIVATE);
+        level1HighScore.setText("HighScore: " + l1.getInt("l1score", 0));
 
         TextView level2HighScore = findViewById(R.id.level2HighScore);
+        SharedPreferences l2 = getSharedPreferences("l2", MODE_PRIVATE);
+        level2HighScore.setText("HighScore: " + l2.getInt("l2score", 0));
 
         TextView level3HighScore = findViewById(R.id.level13HighScore);
-
-
-
-        final SharedPreferences l1 = getSharedPreferences("l1", MODE_PRIVATE);
-        final SharedPreferences l2 = getSharedPreferences("l2", MODE_PRIVATE);
-        final SharedPreferences l3 = getSharedPreferences("l3", MODE_PRIVATE);
-
-
-        level1HighScore.setText(new StringBuilder().append("HighScore: ").append(l1.getInt("highscore", 0)).toString());
-        level2HighScore.setText(new StringBuilder().append("HighScore: ").append(l2.getInt("highscore", 0)).toString());
-        level3HighScore.setText(new StringBuilder().append("HighScore: ").append(l3.getInt("highscore", 0)).toString());
+        SharedPreferences l3 = getSharedPreferences("l3", MODE_PRIVATE);
+        level3HighScore.setText("HighScore: " + l3.getInt("l3score", 0));
 
         isMute = l1.getBoolean("isMute", false);
 
-        final ImageView volumeCtrl = findViewById(R.id.volumeCtrl);
 
-        if (isMute)
-            volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_off_24);
-        else
-            volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
-
-        // volume controller
-        volumeCtrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                isMute = !isMute;
-                if (isMute)
-                    volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_off_24);
-                else
-                    volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
-
-                SharedPreferences.Editor editor = l1.edit();
-                editor.putBoolean("isMute", isMute);
-                editor.apply();
-
-            }
-        });
 
     }
 }

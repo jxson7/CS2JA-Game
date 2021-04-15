@@ -27,7 +27,7 @@ public class GameView3 extends SurfaceView implements Runnable {
     public static float screenRatioX, screenRatioY;
     private final Paint paint;
     private final Enemy[] enemys;
-    public  SharedPreferences prefs;
+    public  SharedPreferences l3;
     private final Random random;
     private final SoundPool soundPool;
     private final List<Bullet> bullets;
@@ -43,7 +43,7 @@ public class GameView3 extends SurfaceView implements Runnable {
         this.activity = activity;
 
 
-        prefs = activity.getSharedPreferences("l3", Context.MODE_PRIVATE);
+        l3 = activity.getSharedPreferences("l3", Context.MODE_PRIVATE);
 
 
 
@@ -243,9 +243,9 @@ public class GameView3 extends SurfaceView implements Runnable {
 
     private void saveIfHighScore() {
 
-        if (prefs.getInt("score: ", 0) < score) {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("score: ", score);
+        if (l3.getInt("l3score", 0) < score) {
+            SharedPreferences.Editor editor = l3.edit();
+            editor.putInt("l3score", score);
             editor.apply();
         }
 
@@ -299,8 +299,7 @@ public class GameView3 extends SurfaceView implements Runnable {
 
     public void newBullet() {
 
-        if (!prefs.getBoolean("isMute", false))
-            soundPool.play(sound, 1, 1, 0, 0, 1);
+
 
         Bullet bullet = new Bullet(getResources());
         bullet.x = flight.x + flight.width;

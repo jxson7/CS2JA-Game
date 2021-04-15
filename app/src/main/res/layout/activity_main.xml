@@ -125,14 +125,6 @@
         app:layout_constraintStart_toEndOf="@+id/L2"
         app:layout_constraintTop_toTopOf="@+id/level2HighScore" />
 
-    <ImageView
-        android:id="@+id/volumeCtrl"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:src="@drawable/ic_baseline_volume_up_24"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
