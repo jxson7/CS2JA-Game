@@ -1,84 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.57"
     tools:context=".MainActivity">
 
+
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/home" />
+        android:src="@drawable/home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="48sp"
-        android:text="Flying Dutchman"
+        android:layout_marginBottom="6dp"
+        android:text="@string/flying_dutchman"
         android:textColor="#ffffff"
-        android:layout_above="@id/play"
-        android:layout_below="@id/highScoreTxt"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_above="@id/play"
         android:text="Select A Level from Below!"
         android:textColor="#20C69F		"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/play"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
 
+
+    <TextView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:text="SkyHighNine"
+        android:textColor="#20C6FA"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/label"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/L3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="Retro '84"
+        android:textColor="#6B8E53"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/level13HighScore"
+        app:layout_constraintTop_toBottomOf="@+id/label" />
 
     <TextView
         android:id="@+id/L2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/play"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="33dp"
         android:text="GhostTown"
         android:textColor="#E80000"
         android:textSize="30sp"
-        />
+        app:layout_constraintStart_toStartOf="@+id/label"
+        app:layout_constraintTop_toBottomOf="@+id/label" />
 
     <TextView
+        android:id="@+id/level1HighScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SkyHighNine"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="#20C6FA"
-        android:id="@+id/play"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Retro '84"
-        android:textSize="30sp"
-        android:layout_below="@id/L2"
-        android:layout_centerInParent="true"
-        android:textColor="#317900"
-        android:id="@+id/L3"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#FFFFFF"
+        android:layout_marginTop="252dp"
+        android:layout_marginRight="528dp"
+        android:autoText="false"
         android:text="High Score"
-        android:id="@+id/highScoreTxt"
-        android:layout_margin="16dp"
-        android:layout_alignParentRight="true"/>
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/level2HighScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:text="High Score"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/level1HighScore"
+        app:layout_constraintStart_toStartOf="@+id/L2" />
+
+    <TextView
+        android:id="@+id/level13HighScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
+        android:layout_marginLeft="63dp"
+        android:text="High Score"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/level2HighScore"
+        app:layout_constraintStart_toEndOf="@+id/L2"
+        app:layout_constraintTop_toTopOf="@+id/level2HighScore" />
 
     <ImageView
+        android:id="@+id/volumeCtrl"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:id="@+id/volumeCtrl"
-        android:src="@drawable/ic_baseline_volume_up_24"/>
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/ic_baseline_volume_up_24"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

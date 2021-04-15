@@ -47,12 +47,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView highScoreTxt = findViewById(R.id.highScoreTxt);
+        TextView level1HighScore = findViewById(R.id.level1HighScore);
 
-        final SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
-        highScoreTxt.setText(new StringBuilder().append("HighScore: ").append(prefs.getInt("highscore", 0)).toString());
+        TextView level2HighScore = findViewById(R.id.level2HighScore);
 
-        isMute = prefs.getBoolean("isMute", false);
+        TextView level3HighScore = findViewById(R.id.level13HighScore);
+
+
+
+        final SharedPreferences l1 = getSharedPreferences("l1", MODE_PRIVATE);
+        final SharedPreferences l2 = getSharedPreferences("l2", MODE_PRIVATE);
+        final SharedPreferences l3 = getSharedPreferences("l3", MODE_PRIVATE);
+
+
+        level1HighScore.setText(new StringBuilder().append("HighScore: ").append(l1.getInt("highscore", 0)).toString());
+        level2HighScore.setText(new StringBuilder().append("HighScore: ").append(l2.getInt("highscore", 0)).toString());
+        level3HighScore.setText(new StringBuilder().append("HighScore: ").append(l3.getInt("highscore", 0)).toString());
+
+        isMute = l1.getBoolean("isMute", false);
 
         final ImageView volumeCtrl = findViewById(R.id.volumeCtrl);
 
@@ -72,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
 
-                SharedPreferences.Editor editor = prefs.edit();
+                SharedPreferences.Editor editor = l1.edit();
                 editor.putBoolean("isMute", isMute);
                 editor.apply();
 

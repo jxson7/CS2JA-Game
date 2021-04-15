@@ -27,7 +27,7 @@ public class GameView3 extends SurfaceView implements Runnable {
     public static float screenRatioX, screenRatioY;
     private final Paint paint;
     private final Enemy[] enemys;
-    private final SharedPreferences prefs;
+    public  SharedPreferences prefs;
     private final Random random;
     private final SoundPool soundPool;
     private final List<Bullet> bullets;
@@ -43,7 +43,7 @@ public class GameView3 extends SurfaceView implements Runnable {
         this.activity = activity;
 
 
-        prefs = activity.getSharedPreferences("game", Context.MODE_PRIVATE);
+        prefs = activity.getSharedPreferences("l3", Context.MODE_PRIVATE);
 
 
 

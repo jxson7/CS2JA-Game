@@ -7,6 +7,10 @@ import android.graphics.BitmapFactory;
  * The following class is used to generate the background image that is to be used within that level of the game.
  */
 public class BackgroundLevel2 {
+
+    int x = 0;
+    int y = 0;
+
     Bitmap background; // Bitmap variable to create the wallpaper
     /**
      *
