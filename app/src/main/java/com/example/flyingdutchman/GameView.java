@@ -27,9 +27,8 @@ public class GameView extends SurfaceView implements Runnable {
     public static float screenRatioX, screenRatioY;
     private final Paint paint;
     private final Enemy[] enemys;
-    private final SharedPreferences prefs;
+    private SharedPreferences prefs;
     private final Random random;
-    private final SoundPool soundPool;
     private final List<Bullet> bullets;
     private int sound;
     private final com.example.flyingdutchman.Flight flight;
@@ -42,23 +41,6 @@ public class GameView extends SurfaceView implements Runnable {
 
         this.activity = activity;
 
-
-        prefs = activity.getSharedPreferences("l1", Context.MODE_PRIVATE);
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                    .setUsage(AudioAttributes.USAGE_GAME)
-                    .build();
-
-            soundPool = new SoundPool.Builder()
-                    .setAudioAttributes(audioAttributes)
-                    .build();
-
-        } else
-            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
         //sound = soundPool.load(activity, R.raw.shoot, 1);
 
