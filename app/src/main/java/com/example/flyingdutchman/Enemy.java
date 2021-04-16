@@ -19,8 +19,8 @@ public class Enemy {
 
     public int speed = 3; // a based speed value is set up
     public boolean wasShot = true; // boolean is set to trigger if the bird was shot.
-    int x = 0, y, width, height, EnemyCounter = 1;
-    Bitmap enemySprite1, enemySprite2, enemySprite3, enemySprite4;
+    int x = 0, y, width, height, EnemyCounter = 1; //sets of variable
+    Bitmap enemySprite1, enemySprite2, enemySprite3, enemySprite4; //bitmap to generate sprites
 
     /**
      *
@@ -28,6 +28,7 @@ public class Enemy {
      */
     Enemy (Resources res) {
 
+        // retrieving all files for enemySprites
         enemySprite1 = BitmapFactory.decodeResource(res, bird1);
         enemySprite2 = BitmapFactory.decodeResource(res, bird2);
         enemySprite3 = BitmapFactory.decodeResource(res, bird3);
@@ -42,6 +43,7 @@ public class Enemy {
         width = (int) (width * screenRatioX);
         height = (int) (height * screenRatioY);
 
+        //scaling image based on use screen
         enemySprite1 = Bitmap.createScaledBitmap(enemySprite1, width, height, false);
         enemySprite2 = Bitmap.createScaledBitmap(enemySprite2, width, height, false);
         enemySprite3 = Bitmap.createScaledBitmap(enemySprite3, width, height, false);
@@ -52,7 +54,7 @@ public class Enemy {
 
     /**
      *
-     * @return
+     * @return enemy sprite based on position and transition
      */
     Bitmap getEnemy () {
 
@@ -79,7 +81,7 @@ public class Enemy {
 
     /**
      *
-     * @return
+     * @return creation of enemy sprite
      */
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);

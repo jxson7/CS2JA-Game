@@ -8,32 +8,33 @@ import android.graphics.Rect;
 import static com.example.flyingdutchman.GameView.screenRatioX;
 import static com.example.flyingdutchman.GameView.screenRatioY;
 
-
+/**
+ * The following class is developed for the pilot (user) sprite based on the level.
+ */
 public class Flight3 {
 
-    int toShoot = 0;
-    boolean isGoingUp = false;
-    int x, y, width =1080 , height = 720 , wingCounter = 0, shootCounter = 1;
-    Bitmap flight1, flight2, shoot1, shoot2, shoot3, shoot4, shoot5, dead;
-    private final GameView3 gameView;
+    int toShoot = 0; //firing variable
+    boolean isGoingUp = false; //movement boolean
+    int x, y, width, height, wingCounter = 0, shootCounter = 1; // dimentions of screen
+    Bitmap flight1, flight2, shoot1, shoot2, shoot3, shoot4, shoot5, dead; //variables used for bitmap images
+    private final GameView3 gameView; //retrieval of gameView file
 
     /**
-     *  @param gameView
-     * @param screenY
-     * @param res
+     *  @param gameView gameView represents the user level
+     * @param screenY represents screen ratio
+     * @param res resource retrieval from folder
      */
-    Flight3(GameView3 gameView, int screenY, Resources res) {
+    Flight3 (GameView3 gameView, int screenY, Resources res) {
 
         this.gameView = gameView;
 
+
+        // retrieval of user's sprites
         flight1 = BitmapFactory.decodeResource(res, R.drawable.fly1);
         flight2 = BitmapFactory.decodeResource(res, R.drawable.fly2);
 
-//        width = 1080;
-//        height = 720;
-
-        width = flight2.getWidth();
-        height = flight2.getHeight();
+        width = flight1.getWidth();
+        height = flight1.getHeight();
 
         width /= 4;
         height /= 4;
@@ -41,15 +42,18 @@ public class Flight3 {
         width = (int) (width * screenRatioX);
         height = (int) (height * screenRatioY);
 
+        //scaling sprites based upon users screen
         flight1 = Bitmap.createScaledBitmap(flight1, width, height, false);
         flight2 = Bitmap.createScaledBitmap(flight2, width, height, false);
 
+        // decoding resource retrieves the shoot sprites
         shoot1 = BitmapFactory.decodeResource(res, R.drawable.shoot1);
         shoot2 = BitmapFactory.decodeResource(res, R.drawable.shoot2);
         shoot3 = BitmapFactory.decodeResource(res, R.drawable.shoot3);
         shoot4 = BitmapFactory.decodeResource(res, R.drawable.shoot4);
         shoot5 = BitmapFactory.decodeResource(res, R.drawable.shoot5);
 
+        // scaling once again
         shoot1 = Bitmap.createScaledBitmap(shoot1, width, height, false);
         shoot2 = Bitmap.createScaledBitmap(shoot2, width, height, false);
         shoot3 = Bitmap.createScaledBitmap(shoot3, width, height, false);
@@ -68,7 +72,7 @@ public class Flight3 {
 
     /**
      *
-     * @return
+     * @return flight animation
      */
     Bitmap getFlight () {
 
@@ -112,7 +116,7 @@ public class Flight3 {
 
     /**
      *
-     * @return
+     * @return generation of rect representing sprite
      */
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);
@@ -120,7 +124,7 @@ public class Flight3 {
 
     /**
      *
-     * @return
+     * @return dead sprite
      */
     Bitmap getDead () {
         return dead;

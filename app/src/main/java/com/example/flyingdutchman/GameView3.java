@@ -27,36 +27,38 @@ public class GameView3 extends SurfaceView implements Runnable {
     public static float screenRatioX, screenRatioY;
     private final Paint paint;
     private final Enemy[] enemys;
-    public  SharedPreferences l3;
+    private SharedPreferences prefs;
     private final Random random;
     private final List<Bullet> bullets;
     private int sound;
-    private final Flight3 flight;
+    private final com.example.flyingdutchman.Flight3 flight;
     private final GameActivity3 activity;
     private final BackgroundLevel3 background1;
     private final BackgroundLevel3 background2;
 
+
+    /**
+     *
+     * The following class focuses on the game flow based on the said level
+     * @param activity link to GameActivity to control flow of game
+     * @param screenX represents screen dimension
+     * @param screenY represents screen dimension
+     */
     public GameView3(GameActivity3 activity, int screenX, int screenY) {
         super(activity);
 
         this.activity = activity;
-
-
-        l3 = activity.getSharedPreferences("l3", Context.MODE_PRIVATE);
-
-        //sound = soundPool.load(activity, R.raw.shoot, 1);
-
         this.screenX = screenX;
         this.screenY = screenY;
-        screenRatioX = 1920f / screenX;
-        screenRatioY = 1080f / screenY;
+        screenRatioX = 1920f / screenX; // calculation of screen dimensions
+        screenRatioY = 1080f / screenY;// calculation of screen dimensions
 
-        background1 = new BackgroundLevel3(screenX, screenY, getResources());
-        background2 = new BackgroundLevel3(screenX, screenY, getResources());
+        background1 = new BackgroundLevel3(screenX, screenY, getResources()); // relation to retrieing the background for the level.
+        background2 = new BackgroundLevel3(screenX, screenY, getResources()); // relation to retrieing the background for the level.
 
-        flight = new Flight3(this, screenY, getResources());
+        flight = new Flight3(this, screenY, getResources()); // retrieving the user sprite
 
-        bullets = new ArrayList<>();
+        bullets = new ArrayList<>(); // setting array up for bullets
 
         background2.x = screenX;
 
@@ -66,35 +68,33 @@ public class GameView3 extends SurfaceView implements Runnable {
 
         enemys = new Enemy[4];
 
+        // creation of loop to retrive all enemy sprites
         for (int i = 0;i < 4;i++) {
-
             Enemy enemy = new Enemy(getResources());
             enemys[i] = enemy;
-
         }
-
         random = new Random();
 
     }
 
 
-
-
+    /**
+     * run is used to trace the flow of the game, ensuring a regular update is done.
+     */
     @Override
     public void run() {
-
         while (isPlaying) {
-
             update ();
             draw ();
             sleep ();
-
         }
 
     }
 
+    /**
+     * update() is used to ensure the game successfully refreshes. using a moving background, updated new enemy birds and new bullets.
+     */
     private void update () {
-
         background1.x -= 10 * screenRatioX;
         background2.x -= 10 * screenRatioX;
 
@@ -117,45 +117,29 @@ public class GameView3 extends SurfaceView implements Runnable {
         if (flight.y >= screenY - flight.height)
             flight.y = screenY - flight.height;
 
-        List<Bullet> trash = new ArrayList<>();
+        List<Bullet> remove = new ArrayList<>();
 
         for (Bullet bullet : bullets) {
-
             if (bullet.x > screenX)
-                trash.add(bullet);
-
+                remove.add(bullet);
             bullet.x += 50 * screenRatioX;
-
             for (Enemy enemy : enemys) {
-
                 if (Rect.intersects(enemy.getCollisionShape(),
                         bullet.getCollisionShape())) {
-
                     score++;
                     enemy.x = -500;
                     bullet.x = screenX + 500;
                     enemy.wasShot = true;
-
                 }
-
             }
-
         }
 
-        for (Bullet bullet : trash)
+        for (Bullet bullet : remove)
             bullets.remove(bullet);
 
         for (Enemy enemy : enemys) {
-
             enemy.x -= enemy.speed;
-
             if (enemy.x + enemy.width < 0) {
-
-//                if (!enemy.wasShot) {
-//                    isGameOver = true;
-//                    return;
-//                }
-
                 int bound = (int) (10 * screenRatioX);
                 enemy.speed = random.nextInt(bound);
 
@@ -168,8 +152,8 @@ public class GameView3 extends SurfaceView implements Runnable {
                 enemy.wasShot = false;
             }
 
+            // trace of interaction between enemy and user sprite, and if so, game ends
             if (Rect.intersects(enemy.getCollisionShape(), flight.getCollisionShape())) {
-
                 isGameOver = true;
                 return;
             }
@@ -178,6 +162,10 @@ public class GameView3 extends SurfaceView implements Runnable {
 
     }
 
+
+    /**
+     * draw is used to draw the background, enemy sprites and user sprites
+     */
     private void draw () {
 
         if (getHolder().getSurface().isValid()) {
@@ -189,14 +177,21 @@ public class GameView3 extends SurfaceView implements Runnable {
             for (Enemy enemy : enemys)
                 canvas.drawBitmap(enemy.getEnemy(), enemy.x, enemy.y, paint);
 
-            canvas.drawText(score + "", screenX / 2f, 164, paint);
+            canvas.drawText(score + "Score: " + "", screenX / 2f, 164, paint); // illustration of score on scoreboard for user
 
+            // if statement is used to check that if the game ends via the set constraints, the scores are saved (if higher).
             if (isGameOver) {
                 isPlaying = false;
                 canvas.drawBitmap(flight.getDead(), flight.x, flight.y, paint);
                 getHolder().unlockCanvasAndPost(canvas);
                 saveIfHighScore();
-                waitBeforeExiting ();
+                try {
+                    Thread.sleep(3000);
+                    activity.startActivity(new Intent(activity, MainActivity.class));
+                    activity.finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 return;
             }
 
@@ -204,35 +199,29 @@ public class GameView3 extends SurfaceView implements Runnable {
 
             for (Bullet bullet : bullets)
                 canvas.drawBitmap(bullet.bullet, bullet.x, bullet.y, paint);
-
             getHolder().unlockCanvasAndPost(canvas);
 
         }
 
     }
 
-    private void waitBeforeExiting() {
 
-        try {
-            Thread.sleep(3000);
-            activity.startActivity(new Intent(activity, MainActivity.class));
-            activity.finish();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
+    /**
+     * saveIfHighScore is used to save the high score based upon previous ones and if higher, the score is updated
+     */
     private void saveIfHighScore() {
 
-        if (l3.getInt("l3score", 0) < score) {
-            SharedPreferences.Editor editor = l3.edit();
+        if (prefs.getInt("l3score", 0) < score) {
+            SharedPreferences.Editor editor = prefs.edit();
             editor.putInt("l3score", score);
             editor.apply();
         }
 
     }
 
+    /**
+     * sleep thread is used to keep a slight delay for user convenience.
+     */
     private void sleep () {
         try {
             Thread.sleep(17);
@@ -241,6 +230,9 @@ public class GameView3 extends SurfaceView implements Runnable {
         }
     }
 
+    /**
+     * when the user returns into the game the game flow resumes.
+     */
     public void resume () {
 
         isPlaying = true;
@@ -249,6 +241,9 @@ public class GameView3 extends SurfaceView implements Runnable {
 
     }
 
+    /**
+     * when the user backs out of the game, pause() is used to suspend the game
+     */
     public void pause () {
 
         try {
@@ -263,32 +258,33 @@ public class GameView3 extends SurfaceView implements Runnable {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        switch (event.getAction()) {
+        switch (event.getAction()) { // if the user taps down, the user sprite moves.
             case MotionEvent.ACTION_DOWN:
-                if (!(event.getX() >= (screenX / 2))) {
+                if (event.getX() < screenX / 2) {
                     flight.isGoingUp = true;
                 }
                 break;
             case MotionEvent.ACTION_UP:
                 flight.isGoingUp = false;
-                if (!(event.getX() <= (2 / screenX)))
-                    flight.toShoot++;
+                if (event.getX() > screenX / 2)
+                    flight.toShoot++; // if up is tapped, a bullet is fired.
                 break;
         }
 
         return true;
     }
 
+    /**
+     * new bullets are generated when the user fires and are added to an arrayList for constant regeneration.
+     */
     public void newBullet() {
-
-
-
         Bullet bullet = new Bullet(getResources());
         bullet.x = flight.x + flight.width;
         bullet.y = flight.y + (flight.height / 2);
         bullets.add(bullet);
 
     }
+
 }
 
 

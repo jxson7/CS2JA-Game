@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.WindowManager;
 
 /**
- *
+ * Game activity represents the activities during gameplay of the levels.
  */
 public class GameActivity extends AppCompatActivity {
 
-    public GameView gameView;
+    public GameView gameView; // link to gameview.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,11 @@ public class GameActivity extends AppCompatActivity {
 
         gameView = new GameView(this, point.x, point.y);
 
-        setContentView(gameView);
+        setContentView(gameView); // setting content view to show the gameView
     }
 
     /**
-     *
+     * represents when the user pauses the game
      */
     @Override
     protected void onPause() {
@@ -37,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * represents when the user returns into game
      */
     @Override
     protected void onResume() {
@@ -45,9 +45,4 @@ public class GameActivity extends AppCompatActivity {
         gameView.resume();
     }
 
-
-    public void onClick(View view) {
-        gameView.newBullet();
-
-    }
 }

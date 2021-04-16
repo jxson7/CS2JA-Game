@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * The following class focuses on the creation of th main home screen that the user will interact with. This includes button controls for the user.
+ * The following class focuses on the creation of the main home screen that the user will interact with. This includes button controls for the user.
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -23,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); // allowance of full screen for the user
-
+        // loads the mainActivity from the xml files.
         setContentView(R.layout.activity_main);
 
+
+        // clickListener used, so when the user clicks, the level is loaded.
         findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // clickListener used, so when the user clicks, the level is loaded.
         findViewById(R.id.L2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // clickListener used, so when the user clicks, the level is loaded.
         findViewById(R.id.L3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // used to represent the scores on the user home screen under the corresponding levels.
         TextView level1HighScore = findViewById(R.id.level1HighScore);
         SharedPreferences l1 = getSharedPreferences("l1", MODE_PRIVATE);
         level1HighScore.setText("HighScore: " + l1.getInt("l1score", 0));

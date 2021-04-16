@@ -1,19 +1,17 @@
 package com.example.flyingdutchman;
 
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import com.example.flyingdutchman.Background;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
 /**
- *
+ * Game activity represents the activities during gameplay of the levels.
  */
-public class GameActivity2 extends GameActivity {
+public class GameActivity2 extends AppCompatActivity {
 
-    public GameView2 gameView;
+    public GameView2 gameView; // link to gameview.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +24,11 @@ public class GameActivity2 extends GameActivity {
 
         gameView = new GameView2(this, point.x, point.y);
 
-        setContentView(gameView);
+        setContentView(gameView); // setting content view to show the gameView
     }
 
     /**
-     *
+     * represents when the user pauses the game
      */
     @Override
     protected void onPause() {
@@ -39,7 +37,7 @@ public class GameActivity2 extends GameActivity {
     }
 
     /**
-     *
+     * represents when the user returns into game
      */
     @Override
     protected void onResume() {
@@ -47,9 +45,4 @@ public class GameActivity2 extends GameActivity {
         gameView.resume();
     }
 
-    public void onClick(View view) {
-        // gameView.fireBullets();
-        gameView.newBullet();
-
-    }
 }
